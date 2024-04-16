@@ -4,19 +4,16 @@ import { Title } from "@/components";
 
 const ProfilePage = async () => {
 
-    const session = await auth();
+  const session = await auth();
 
-    if(!session?.user){
-        // redirect('/auth/login?returnTo=/perfil');
-        redirect('/');
-    }
-
+  if(!session?.user) redirect('/');
+  
   return (
     <div>
         
-        <Title title="Profile" />
+      <Title title="Profile" />
 
-        <pre>{ JSON.stringify(session?.user,null,2) }</pre>
+      <pre>{ JSON.stringify(session?.user,null,2) }</pre>
 
     </div>
 

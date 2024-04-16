@@ -14,3 +14,5 @@ export { default as Pagination } from './ui/pagination/Pagination'
 
 export { default as ProductsInCartItems } from './cart/ProductsInCartItems'
 export { default as OrderSummary } from './cart/OrderSummary'
+
+export { default as Providers } from './provider/Providers'

@@ -1,15 +1,26 @@
 "use client"
+import { useEffect } from "react"
+import { useRouter } from "next/navigation"
 import Link from "next/link"
 import { useFormState, useFormStatus } from "react-dom"
 import { authenticate } from "@/actions"
-import { IoInformationCircleOutline } from "react-icons/io5"
 import clsx from "clsx"
+import { IoInformationCircleOutline } from "react-icons/io5"
 
 
 const LoginForm = () => {
 
-    const { pending } = useFormStatus()
-    const [state, dispatch] = useFormState(authenticate,undefined)
+  const router = useRouter()
+  const { pending } = useFormStatus()
+  const [state, dispatch] = useFormState(authenticate,undefined)
+
+
+  useEffect(() => {
+    if( state === 'Success'){
+      router.replace('/')
+    }
+  }, [state])
+  
 
   return (
     <form className="flex flex-col" action={dispatch}>
@@ -21,6 +32,7 @@ const LoginForm = () => {
         <label htmlFor="password">Contraseña</label>
         <input className="px-5 py-2 border bg-gray-200 rounded mb-5" type="password" name='password'/>
 
+        {/* ALERT DE ERROR */}
         <div
           className="flex h-8 items-end space-x-1"
           aria-live="polite"
@@ -36,11 +48,11 @@ const LoginForm = () => {
 
         <button className={
             clsx(
-                pending ? "btn-disabled" : "btn-primary"
+              pending ? "btn-disabled" : "btn-primary"
             )
         } type="submit" disabled={pending}>Ingresar</button>
 
-        {/* divisor l ine */ }
+        {/* divisor line */ }
         <div className="flex items-center my-5">
             <div className="flex-1 border-t border-gray-500"></div>
             <div className="px-2 text-gray-800">O</div>

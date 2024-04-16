@@ -6,6 +6,7 @@ import { useAppDispatch, useAppSelector } from "@/store"
 import { openSideMenu } from "@/store/features"
 import { getTotalItems } from "@/store/features/cart/cartSlice"
 import { IoSearchOutline, IoCartOutline } from "react-icons/io5"
+import NameProfile from "./NameProfile"
 
 
 export const TopMenu = () => {
@@ -17,7 +18,6 @@ export const TopMenu = () => {
     dispatch(getTotalItems())
   }, [dispatch,cart])
   
-
   return (
     <div className="flex px-5 justify-between items-center w-full">
 
@@ -35,6 +35,9 @@ export const TopMenu = () => {
             <Link href='/gender/women' className="m-2 p-2 rounded-md transition-all hover:bg-gray-100">Mujeres</Link>
             <Link href='/gender/kid' className="m-2 p-2 rounded-md transition-all hover:bg-gray-100">Niños</Link>
         </div>
+
+        {/* NAME PROFILE */}
+        <NameProfile />
 
         {/* SEARCH CART */}
         <div className="flex items-center">

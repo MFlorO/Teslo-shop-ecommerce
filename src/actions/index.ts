@@ -7,3 +7,4 @@ export * from './products/get-price-by-slug'
 //auth
 export * from './auth/login'
 export * from './auth/logout'
+export * from './auth/register'
